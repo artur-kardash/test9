@@ -1,0 +1,9 @@
+.idea
+.vscode
+config.php
+tags
+.tags*
+*.DS_Store
+ftpsync.settings
+credentials.php
+logs/*
