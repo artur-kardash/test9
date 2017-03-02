@@ -15,6 +15,11 @@ class Model_User extends Model {
 		}else{
 			return "error";
 		}
+	}
+
+	public function addnewuser()
+	{
+		
 
 	}
 

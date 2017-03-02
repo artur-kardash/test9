@@ -3,11 +3,12 @@
     <div class="widget">
       <div class="widget-header">
         <div class="title">
-          <h3>Add new user</h3>
+          <h3>Add new customer</h3>
         </div>
       </div>
-        <form action="<?php echo $host . "/admin/"; ?>addnewuser" class="signin-wrapper" method="post">
+        <form action="<?php echo $host . "/admin/"; ?>addnewcust" class="signin-wrapper" method="post">
           <div class="widget-body">
+              <input type="hidden" value="<?php echo $_GET['id']?>" name="id">
             <div class="form-group">
               <input class="form-control" placeholder="Firstname" type="text" name="firstname" required>
             </div>

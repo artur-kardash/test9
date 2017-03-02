@@ -118,7 +118,30 @@ input.searchbox {
   float: right;
 }
 
+ table{
+    width: 100%;
+    margin-top: 20px;
+ }
+   th{
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+   }
+   td{
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+   }
+  tbody tr:hover {
+    background: #EDEDED; 
+    color: #3a3737; 
+   }
 
+   .customers{
+    width: 60%;
+    text-align: center;
+    float: right;
+   }
 
 
 

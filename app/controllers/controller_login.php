@@ -1,10 +1,11 @@
 <?php
 
-class Controller_Login extends Controller {
+class Controller_Login  {
 
 	function __construct() {
 		$this->model = new Model_Login();
 		$this->view = new View();
+
 	}
 	
 	function action_index() {

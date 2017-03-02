@@ -4,7 +4,7 @@ class Controller_User extends Controller
 {
   function __construct()
   {
-  	
+
   	if($_SESSION['level'] != 1){
   		   session_destroy();
       header('Location:/login');
@@ -16,7 +16,6 @@ class Controller_User extends Controller
  function action_index() {
 
  	$data["body_class"] = "page-header-fixed";
-    $data["title"] = "Users";
     $data["title"] = "Users";
  	$res = $this->model->allusers();
  	$data['all'] = $res;
@@ -44,18 +43,7 @@ class Controller_User extends Controller
     // }
  }
 
- function action_alluser()
- {
- 	// $data["title"] = "Users";
- 	// $res = $this->model->allusers();
- 	// $data['all'] = $res;
- 	// if($res == 'error'){
- 	// 	$data['all'] = "You don`t have a clients!";
- 	// 	$this->view->generate('admin_user_view.php', 'template_view.php', $data);
- 	// }else{
-  //   $this->view->generate('admin_user_view.php', 'template_view.php', $data);
- 	// }
- }
+
 
  function action_adduser()
  {	
@@ -63,10 +51,7 @@ class Controller_User extends Controller
  	$this->view->generate('admin_adduser_view.php', 'template_view.php', $data);
  }
 
-function action_addnewuser()
-{
-	$res = $this->model->addnewuser();
-}
+
 
 
 
