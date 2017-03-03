@@ -21,7 +21,7 @@ class Controller_Login  {
 					header('Location:/admin/dashboard');
 				} else if($login["level"] === "3"){
 					$_SESSION['user'] =  md5('user');
-					header('Location:/client/dashboard');
+					header('Location:/manager/dashboard');
 				}else if($login["level"] === "2"){
 					$_SESSION['superuser'] =  md5('superuser');
 					header('Location:/user/dashboard');

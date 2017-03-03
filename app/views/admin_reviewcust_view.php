@@ -3,7 +3,7 @@
 <div class="right_col" role="main">
 
 <div style="display: block; float: left; width: 25%; position: relative;">
-    <h1>Review customer</h1>
+    <h1>Review user</h1>
   <table>
        <input type='hidden' name='id_client' value='<?php echo $data['inf']['id_ag'];?>'/>
        <input type='hidden' name='id_us' value='<?php echo $data['inf']['id'];?>'/>
@@ -30,6 +30,10 @@
            
       <button style="margin-top:20px;" type="submit" name="id" value="<?php echo $data['inf']['id_ag']?>" data-toggle="modal" data-target="#editcust" class="btn btn-primary">Edit</button>
       <a href="#"><input style="margin-top: 20px;" type="button" onclick="goBack()" class="btn btn-primary" name="back" value="Back"></a>
+      <a href="<?php echo $host; ?>/admin/make?id=<?php echo $inf['id_ag']; ?>"><input style="margin-top: 20px;" type="button" class="btn btn-primary" name="make" value="Make superuser"></a>
+      <h5><?php echo $data['inf']['firstname']?> has <?php echo $data['count']['lim']?> clients</h5>
+     
+
 </div>
 </div>
 

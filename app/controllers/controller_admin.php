@@ -68,6 +68,8 @@ class Controller_Admin extends Controller
 
   function action_review()
   {
+    $results = $this->model->countclent();
+    $data['count'] = $results;
     $result = $this->model->getclients();
     $data['cli'] = $result;
     $res = $this->model->review();
@@ -118,6 +120,8 @@ class Controller_Admin extends Controller
 
   function action_reviewcust()
   {
+    $results = $this->model->countmanclent();
+    $data['count'] = $results;
     $res = $this->model->reviewcust();
     $data['inf'] = $res;
     $this->view->generate("admin_reviewcust_view.php", "template_view.php", $data);
@@ -131,6 +135,30 @@ class Controller_Admin extends Controller
     }else{
       echo "Error";
     }
+  }
+
+  function action_addcli()
+  {
+    $data['title'] = 'Add new client';
+    $this->view->generate("admin_addnewclient_view.php", "template_view.php", $data);
+
+  }
+
+  function action_addnewclient()
+  {
+    $res = $this->model->addclient();
+    if($res){
+      header('Location:/admin/allusers');
+    }else{
+      return 'Error db';
+    }
+  }
+
+  function action_make()
+  {
+    $res = $this->model->make();
+    header('Location:/admin/allusers');
+
   }
 
 }

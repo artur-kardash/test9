@@ -1,12 +1,12 @@
-<h4>All Superusers</h4>
+<h4>All manager</h4>
 
 <div class="form-group add">
-   <a href="<?php echo $host . "/admin/adduser"; ?>"><input type="submit" class="btn btn-primary"  value="Add new superuser" ></a>
+   <a href="<?php echo $host . "/user/addmanag"; ?>"><input type="submit" class="btn btn-primary"  value="Add new manager" ></a>
 </div>
 <br/>
-<?php if($data['all'] == 'You don`t have a clients!'){ ?>
-	<h3>You don`t have a Superusers!</h3>
-<?php } ?>
+<?php if($data['all'] == 'You don`t have a managers!'){ ?>
+	<h3>You don`t have a managers!</h3>
+<?php }else{ ?>
 <table>
   <thead>
     <tr>
@@ -26,11 +26,12 @@
       <td> <?= $inf['dob'] ?> </td>
       <td> <?= $inf['phone'] ?> </td>
       <td> 
-        <a href="<?php echo $host; ?>/admin/review?id=<?php echo $inf['user_id']; ?>"><input type="button" name="review" value="View/Edit"></a> 
-        <a href="<?php echo $host; ?>/admin/delete?id=<?php echo $inf['user_id']; ?>"><input type="button" name="delete" value="Delete"></a> 
+        <a href="<?php echo $host; ?>/user/review?id=<?php echo $inf['user_id']; ?>"><input type="button" name="review" value="View/Edit"></a> 
+        <a href="<?php echo $host; ?>/user/delete?id=<?php echo $inf['user_id']; ?>"><input type="button" name="delete" value="Delete"></a> 
       </td>
     </tr>  
      <? endforeach; ?>
   </tbody>
 </table>
 
+<?php } ?>

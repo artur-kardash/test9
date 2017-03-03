@@ -1,7 +1,4 @@
 <div>
-  <div class="form-group add">
-   <a href="<?php echo $host . "/admin/addcustomer?id=".$data['inf']['id'];?>"><input type="submit" class="btn btn-primary"  value="Add new user" ></a>
-</div>
 </div>
 <div class="right_col" role="main">
 
@@ -32,40 +29,12 @@
   </table>
            
       <button style="margin-top:20px;" type="submit" name="id" value="<?php echo $data['inf']['id_ag']?>" data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</button>
-      <a href="<?php echo $host; ?>/admin/allusers"><input style="margin-top: 20px;" type="button" class="btn btn-primary" name="back" value="Back"></a>
-      <a href="<?php echo $host; ?>/admin/addcli?id=<?php echo $inf['id_ag']; ?>"><input style="margin-top: 20px;" type="button" class="btn btn-primary" name="back" value="Add new client"></a>
+      <a href="<?php echo $host; ?>/user/allusers"><input style="margin-top: 20px;" type="button" class="btn btn-primary" name="back" value="Back"></a>
       <h5><?php echo $data['inf']['firstname']?> has <?php echo $data['count']['lim']?> clients</h5>
      
 </div>
 
-    <div class="customers">
-        <h1><?php echo $data['inf']['firstname']?> users</h1>
-      <table>
-          <thead>
-            <tr>
-              <th width="5%" >ID</th>
-              <th width="25%">Name</th>
-              <th width="20%">DOB</th>
-              <th width="20%">Phone</th>
-              <th width="20%">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <? foreach($data['cli'] as $info) :?>
-              <td> <?= $info['id'] ?> </td>
-              <td> <?= $info['firstname']." ".$info['lastname'] ?> </td>
-              <td> <?= $info['dob'] ?> </td>
-              <td> <?= $info['phone'] ?> </td>
-              <td> 
-                <a href="<?php echo $host; ?>/admin/reviewcust?id=<?php echo $info['id']; ?>"><input type="button" name="review" value="View/Edit"></a> 
-                <a href="<?php echo $host; ?>/admin/deletecust?id=<?php echo $info['id']; ?>"><input type="button" name="delete" value="Delete"></a> 
-              </td>
-            </tr>  
-             <? endforeach; ?>
-          </tbody>
-      </table>
-    </div>
+    
 </div>
 
 <!-- modal window -->
@@ -79,7 +48,7 @@
         </div>
 
 
-    <form id="editCliorm" enctype="multipart/form-data" action="<?php echo $host . "/admin/"; ?>updateprofil" method="post">
+    <form id="editCliorm" enctype="multipart/form-data" action="<?php echo $host . "/user/"; ?>updateprofil" method="post">
           <div class="modal-body">
             <input type="hidden" class="form-control" name="id_sus" value="<?php echo $data['inf']['id']?>" />
             <input type="hidden" class="form-control" name="id" value="<?php echo $data['inf']['id_ag']?>" />

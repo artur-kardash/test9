@@ -62,7 +62,7 @@ class Model_Admin extends Model {
     $query .= "WHERE id='$id'";
     $con = $this->db();
     $result = $con->query($query);
-    $que = "DELETE FROM `clients`";
+    $que = "DELETE FROM `manager`";
     $que .= "WHERE id_suser='$id'";
     $con = $this->db();
     $results = $con->query($que);
@@ -90,7 +90,7 @@ public function review()
 public function getclients()
 {
   $id = $_GET['id'];
-  $sql = "SELECT * FROM `clients`";
+  $sql = "SELECT * FROM `manager`";
   $sql .= "WHERE id_suser='$id'";
   $con = $this->db();
   $result = $con->query($sql);
@@ -157,7 +157,7 @@ public function addnewcust()
     $res = $con->query($sql);
     $last_id = $con->insert_id;
     
-    $sql_query = "INSERT INTO `clients`(firstname, lastname, dob, phone, user_id, id_suser) VALUES ('$firstname', '$lastname', '$dob', '$phone', '$last_id', '$id')";
+    $sql_query = "INSERT INTO `manager`(firstname, lastname, dob, phone, user_id, id_suser) VALUES ('$firstname', '$lastname', '$dob', '$phone', '$last_id', '$id')";
     $con  = $this->db();
     $result = $con->query($sql_query);
     if($res && $result){
@@ -170,14 +170,14 @@ public function addnewcust()
 public function deletecust()
 {
   $id = $_GET['id'];
-  $sql = "SELECT `user_id` FROM `clients`";
+  $sql = "SELECT `user_id` FROM `manager`";
   $sql .= "WHERE id='$id'";
   $con = $this->db();
   $resid = $con->query($sql);
   $id_res = $resid->fetch_assoc();
   $id_res_us = $id_res['user_id'];
 
-  $que = "DELETE FROM `clients`";
+  $que = "DELETE FROM `manager`";
   $que .= "WHERE id='$id'";
   $con = $this->db();
   $results = $con->query($que);
@@ -197,9 +197,9 @@ public function deletecust()
 public function reviewcust()
 {
   $id = $_GET['id'];
-  $que = "SELECT `c`.`id` as `id_ag`, `c`.`firstname`, `u`.`id`, `c`.`lastname`, `c`.`dob`, `c`.`phone`, `c`.`user_id`, `c`.`id_suser`, `u`.`email`, `u`.`password`, `u`.`level` FROM `clients` as `c`";
+  $que = "SELECT `m`.`id` as `id_ag`, `m`.`firstname`, `u`.`id`, `m`.`lastname`, `m`.`dob`, `m`.`phone`, `m`.`user_id`, `m`.`id_suser`, `u`.`email`, `u`.`password`, `u`.`level` FROM `manager` as `m`";
   $que .="INNER JOIN `users` as `u`";
-  $que .="ON u.id=c.user_id AND `c`.`id`=".$id;
+  $que .="ON u.id=m.user_id AND `m`.`id`=".$id;
   $con = $this->db();
   $results = $con->query($que);
 
@@ -232,7 +232,7 @@ public function updateprofilcust()
     $res = $con->query($sql);
     }
 
-    $query = "UPDATE `clients`";
+    $query = "UPDATE `manager`";
     $query .= "SET firstname='$firstname', lastname='$lastname', dob='$dob', phone='$phone'";
     $query .= "WHERE user_id='$id'";
    
@@ -244,6 +244,104 @@ public function updateprofilcust()
     }else{
       return 'Error db';
     }
+}
+
+public function countclent()
+{
+  $id = $_GET['id'];
+  $sql_query = "SELECT `id` FROM `superuser`";
+  $sql_query .= "WHERE user_id='$id'";
+  $con = $this->db();
+  $result = $con->query($sql_query);
+  $id_sup = $result->fetch_assoc();
+  $sup = $id_sup['id'];
+
+  $sql = "SELECT count(*) as lim FROM `clients`";
+  $sql .= "WHERE superuser_id=$sup";
+  $con = $this->db();
+  $res = $con->query($sql);
+  $count = $res->fetch_assoc();
+
+  return $count;
+}
+
+public function addclient()
+{
+    $id = $_POST['id'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $dt = $_POST['d&t'];
+    $phone = $_POST['phone'];
+    $projectname = $_POST['projectname'];
+    $email = $_POST['email'];
+    $remark = $_POST['remark'];
+
+    $sql = "INSERT INTO `clients`(email, firstname, lastname, date_time, phone, projectname, remarks, superuser_id) VALUES ('$email', '$firstname', '$lastname', '$dt', '$phone', '$projectname', '$remark', '$id')";
+    $con  = $this->db();
+    $res = $con->query($sql);
+   
+    if($res){
+      return 'Success';
+    }else{
+      return 'Error db';
+    }
+  
+}
+
+public function countmanclent()
+{
+  $id = $_GET['id'];
+  // $sql_query = "SELECT `id` FROM `superuser`";
+  // $sql_query .= "WHERE user_id='$id'";
+  // $con = $this->db();
+  // $result = $con->query($sql_query);
+  // $id_sup = $result->fetch_assoc();
+  // $sup = $id_sup['id'];
+
+  $sql = "SELECT count(*) as lim FROM `clients`";
+  $sql .= "WHERE manager_id='$id'";
+
+  $con = $this->db();
+  $res = $con->query($sql);
+  $count = $res->fetch_assoc();
+
+  return $count;
+}
+
+public function make()
+{
+  $id_man = $_GET['id'];
+  $sql = "SELECT * FROM `manager`";
+  $sql .= "WHERE id='$id_man'";
+  $con = $this->db();
+  $res = $con->query($sql);
+  $manag = $res->fetch_assoc();
+
+    $firstname = $manag['firstname'];
+    $lastname = $manag['lastname'];
+    $dob = $manag['dob'];
+    $phone = $manag['phone'];
+    $id_user = $manag['user_id'];
+
+    $sql_query = "INSERT INTO `superuser`(firstname, lastname, phone, dob, user_id) VALUES ('$firstname', '$lastname', '$phone', '$dob', '$id_user')";
+    $con = $this->db();
+    $result = $con->query($sql_query);
+
+
+    $sql_upd = "UPDATE `users`";
+    $sql_upd .= "SET level='2'";
+    $sql_upd .= "WHERE id='$id_user'";
+    $con = $this->db();
+    $results = $con->query($sql_upd);
+   
+
+    $sql_del = "DELETE FROM `manager`";    
+    $sql_del .= "WHERE id='$id_man'";
+    $con = $this->db();
+    $result_del = $con->query($sql_del);
+
+  
+
 }
 
 
