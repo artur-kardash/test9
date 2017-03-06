@@ -28,8 +28,8 @@
             
   </table>
            
-      <button style="margin-top:20px;" type="submit" name="id" value="<?php echo $data['inf']['id_ag']?>" data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</button>
-      <a href="<?php echo $host; ?>/user/allusers"><input style="margin-top: 20px;" type="button" class="btn btn-primary" name="back" value="Back"></a>
+      <button style="margin-top:20px;" type="submit" name="id" value="<?php echo $data['inf']['id_ag']?>" data-toggle="modal" data-target="#edit" class="btn btn-primary newbutton">Edit</button>
+      <a href="<?php echo $host; ?>/user/allusers"><input style="margin-top: 20px;" type="button" class="btn btn-primary newbutton" name="back" value="Back"></a>
       <h5><?php echo $data['inf']['firstname']?> has <?php echo $data['count']['lim']?> clients</h5>
      
 </div>
@@ -78,7 +78,7 @@
               </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Closed</button>
-              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="submit" class="btn btn-primary newbutton">Save</button>
             </div>
           </div>
     </form>

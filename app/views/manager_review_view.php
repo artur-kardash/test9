@@ -76,7 +76,7 @@
               </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Closed</button>
-              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="submit" class="btn btn-primary newbutton">Save</button>
             </div>
           </div>
     </form>

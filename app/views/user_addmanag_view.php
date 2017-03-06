@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="actions">
-            <input class="btn btn-info pull-left" style="background-color:#6A5FAC;" type="submit" value="Save">
+            <input class="btn btn-info pull-left newbutton" type="submit" value="Save">
             <div class="clearfix"></div>
           </div>
         </form>

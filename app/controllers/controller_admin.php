@@ -6,6 +6,11 @@ class Controller_Admin extends Controller
   {
     $this->model = new Model_Admin();
     $this->view = new View();
+    if(Controller::getLevel() != 1){
+      $data['title'] = 'Not login';
+    $this->view->generate('danied_view.php', 'temp_error_view.php', $data);
+    die();
+    }
   }
 
   function action_index()
@@ -89,7 +94,7 @@ class Controller_Admin extends Controller
 
   function action_addcustomer()
   {
-    $data['title'] = "Add new customer";
+    $data['title'] = "Add new user";
     $this->view->generate('admin_addcustom_view.php', 'template_view.php', $data);
   }
 
@@ -158,7 +163,52 @@ class Controller_Admin extends Controller
   {
     $res = $this->model->make();
     header('Location:/admin/allusers');
+  }
 
+  function action_listing()
+  {
+    $res = $this->model->alllisting();
+    $data['title'] = 'All listing';
+    $data['all'] = $res;
+    if($res == 'error'){
+      $data['all'] = "You don`t have a listing!";
+      $this->view->generate("all_listing_view.php", "template_view.php", $data);
+    }else{
+      $this->view->generate("all_listing_view.php", "template_view.php", $data); 
+    }
+  }
+
+  function action_addlisting()
+  {
+    $data['title'] = "Add new listing";
+    $this->view->generate("add_listing_view.php", "template_view.php", $data); 
+  }
+
+  function action_addnewlisting()
+  {
+    $res = $this->model->addnewlisting();
+    if($res){
+      header('Location:/admin/listing');
+    }else{
+      return 'Error db';
+    }
+  }
+
+  function action_reviewlisting()
+  {
+    $res = $this->model->reviewlisting();
+    $data['inf'] = $res;
+    $this->view->generate("admin_reviewlisting_view.php", "template_view.php", $data);
+  }
+
+  function action_deletelisting()
+  {
+    $res = $this->model->deletelisting();
+    if($res){
+    header('Location:/admin/listing');
+    }else{
+      echo "Error db";
+    }
   }
 
 }

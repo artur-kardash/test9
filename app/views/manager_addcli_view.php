@@ -8,31 +8,38 @@
       </div>
         <form action="<?php echo $host . "/manager/"; ?>addnewcli" class="signin-wrapper" method="post">
           <div class="widget-body">
-              <input type="hidden" value="<?php echo $_GET['id']?>" name="id">
+              <!-- <input type="hidden" value="<?php echo $_GET['id']?>" name="id"> -->
             <div class="form-group">
-              <input class="form-control" placeholder="Firstname" type="text" name="firstname" required>
+            <label>First name:</label>
+              <input class="form-control" placeholder="First name" type="text" name="firstname" required>
             </div>
             <div class="form-group">
-              <input class="form-control" placeholder="Lastname" type="text" name="lastname" required>
+            <label>Last name:</label>
+              <input class="form-control" placeholder="Last name" type="text" name="lastname" required>
             </div>
              <div class="form-group">
-              <input class="form-control" placeholder="Project name" type="text" name="projectname" >
+            <label>Development name:</label>
+              <input class="form-control" placeholder="Development name" type="text" name="projectname" >
             </div>
             <div class="form-group">
+            <label>Date of Birth:</label>
               <input class="form-control" placeholder="Date & time" type="date" name="d&t">
             </div>
             <div class="form-group">
+            <label>Phone number:</label>
               <input class="form-control" placeholder="Phone" type="text" name="phone" >
             </div>
             <div class="form-group">
+            <label>Email:</label>
               <input class="form-control" placeholder="Email" type="email" name="email" required>
             </div>
              <div class="form-group">
+             <label>Investment/own stay:</label>
               <input class="form-control" placeholder="Remarks" type="text" name="remarks" >
             </div>
           </div>
           <div class="actions">
-            <input class="btn btn-info pull-left" style="background-color:#6A5FAC;" type="submit" value="Save">
+            <input class="btn btn-info pull-left newbutton" type="submit" value="Save">
             <div class="clearfix"></div>
           </div>
         </form>

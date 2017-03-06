@@ -1,7 +1,7 @@
 <h4>All Superusers</h4>
 
 <div class="form-group add">
-   <a href="<?php echo $host . "/admin/adduser"; ?>"><input type="submit" class="btn btn-primary"  value="Add new superuser" ></a>
+   <a href="<?php echo $host . "/admin/adduser"; ?>"><input type="submit" class="btn btn-primary newbutton"  value="Add new superuser" ></a>
 </div>
 <br/>
 <?php if($data['all'] == 'You don`t have a clients!'){ ?>

@@ -7,6 +7,11 @@ class Controller_User extends Controller
 
     $this->model = new Model_User();
     $this->view = new View();
+    if(Controller::getLevel() != 2){
+      $data['title'] = 'Not login';
+    $this->view->generate('danied_view.php', 'temp_error_view.php', $data);
+    die();
+    }
   }
 
  function action_index() 
@@ -75,6 +80,25 @@ class Controller_User extends Controller
        header('Location:/user/allusers');
     }else{
       echo "Error";
+    }
+  }
+
+  
+
+  function action_reviewlisting()
+  {
+    $res = $this->model->reviewlisting();
+    $data['inf'] = $res;
+    $this->view->generate("admin_reviewlisting_view.php", "template_view.php", $data);
+  }
+
+  function action_deletelisting()
+  {
+    $res = $this->model->deletelisting();
+    if($res){
+    header('Location:/admin/listing');
+    }else{
+      echo "Error db";
     }
   }
 

@@ -1,7 +1,7 @@
 <h4>All manager</h4>
 
 <div class="form-group add">
-   <a href="<?php echo $host . "/user/addmanag"; ?>"><input type="submit" class="btn btn-primary"  value="Add new manager" ></a>
+   <a href="<?php echo $host . "/user/addmanag"; ?>"><input type="submit" class="btn btn-primary newbutton"  value="Add new manager" ></a>
 </div>
 <br/>
 <?php if($data['all'] == 'You don`t have a managers!'){ ?>

@@ -6,6 +6,11 @@ class Controller_Manager extends Controller
   {
     $this->model = new Model_Manager();
     $this->view = new View();
+    if(Controller::getLevel() != 3){
+      $data['title'] = 'Not login';
+    $this->view->generate('danied_view.php', 'temp_error_view.php', $data);
+    die();
+    }
   }
 
  function action_index()

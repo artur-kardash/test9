@@ -62,7 +62,7 @@
         </a>
       </div>
       <div class="logo-box">
-        <a href="/admin/dashboard" class="logo-text"><span>Software Project</span></a>
+        <a href="#" class="logo-text"><span>Software Project</span></a>
       </div><!-- Logo Box -->
       <div class="search-button">
         <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
@@ -161,11 +161,7 @@
             <li>
               <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
             </li>
-            <li>
-              <a href="/admin/logout" class="log-out waves-effect waves-button waves-classic">
-                <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
-              </a>
-            </li>
+        
           </ul><!-- Nav -->
         </div><!-- Top Menu -->
       </div>
@@ -185,47 +181,7 @@
         </div>
       </div>
       <?php }  else echo "<br>"; ?>
-      <ul class="menu accordion-menu">
-
-        <li><a href="/admin/dashboard" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
-        <li class=""><a href="/admin/listing" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list-alt"></span><p>Listings available</p></a>
-         <!--  <ul class="sub-menu">
-          <li><a href="/clients/">Clients</a>
-          <li><a href="<?php echo __HOST__; ?>/Leads_Limits/">Clients Caps</a> </li>
-          <li><a href="<?php echo __HOST__; ?>/Leads_Limits/matches">PostCodes Matches</a></li>
-          </ul> -->
-          <!--          <ul class="sub-menu">-->
-<!--            <li><a href="ui-alerts">Alerts</a></li>-->
-<!--            <li><a href="ui-buttons">Buttons</a></li>-->
-<!--            <li><a href="ui-icons">Icons</a></li>-->
-<!--          </ul>-->
-        </li>
-        <li><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-resize-horizontal"></span><p>Synchronization</p></a></li>
-
-        <li><a href="<?php echo __HOST__; ?>/admin/allusers" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th"></span><p>Contact list</p></a></li>
-        
-        <!--   <ul class="sub-menu">
-            <li><a href="<?php echo __HOST__; ?>/leads/">Leads Delivery</a></li>
-            <li><a href="<?php echo __HOST__; ?>/approvals/">Leads Approvals</a></li>
-
-            <li><a href="<?php echo __HOST__; ?>/rerouting/">Lead Rerouting</a></li>
-
-            <li><a href="<?php echo __HOST__; ?>/leads/distribution/">Leads distribution</a></li>
-          <li><a href="<?php echo __HOST__; ?>/penetration/">Penetration</a></li>
-
-          </ul> -->
-        </li>
-        <li><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-calendar"></span><p>Calendar</p></a>
-<!--          <ul class="sub-menu">-->
-<!--            <li><a href="charts-sparkline">Sparkline</a></li>-->
-<!--            <li><a href="charts-rickshaw">Rickshaw</a></li>-->
-<!--            <li><a href="charts-morris">Morris</a></li>-->
-<!--            <li><a href="charts-flotchart">Flotchart</a></li>-->
-<!--            <li><a href="charts-chartjs">Chart.js</a></li>-->
-<!--          </ul>-->
-        </li>
-        <li><a href="<?php echo __HOST__; ?>/user/" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-usd"></span><p>Profit/Lost</p></a></li>
-      </ul>
+    
     </div><!-- Page Sidebar Inner -->
   </div><!-- Page Sidebar -->
   <div class="page-inner">

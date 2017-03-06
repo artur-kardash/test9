@@ -340,9 +340,82 @@ public function make()
     $con = $this->db();
     $result_del = $con->query($sql_del);
 
-  
-
 }
+
+
+  public function alllisting()
+  {
+    $sql = "SELECT * FROM `listing`";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    if($res->num_rows>0){
+    $all = array();
+    while($result = $res->fetch_assoc()){
+      $all[] = $result;
+    }
+      return $all;
+    }else{
+      return "error";
+    }
+  }
+
+  public function addnewlisting()
+  {
+    $district = $_POST['district'];
+    $huttons = $_POST['huttons'];
+    $projectname = $_POST['projectname'];
+    $type = $_POST['type'];
+    $size = $_POST['size'];
+    $price = $_POST['price'];
+    $tenure = $_POST['tenure'];
+    $commission = $_POST['commission'];
+    $contact_person = $_POST['contact_person'];
+    $tagging = $_POST['tagging'];
+    $building_status = $_POST['building_status'];
+    $remarks = $_POST['remarks'];
+    $location = $_POST['location'];
+    $est = $_POST['est'];
+    $usp = $_POST['usp'];
+    $sql = "INSERT INTO `listing`";
+    $sql .= "(district, huttons, project_name, location, type, size, price, tenure, commission, contact_person, tagging, building_status, remarks, est, usp)";
+    $sql .= " VALUES ('$district', '$huttons', '$projectname', '$location', '$type', '$size', '$price', '$tenure', '$commission', '$contact_person', '$tagging', '$building_status', '$remarks', '$est', '$usp')";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    if($res){
+      return 'Success';
+    }else{
+      return 'Error db';
+    }
+    
+  }
+
+  public function reviewlisting()
+  {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM `listing`";
+    $sql .= "WHERE id = '$id'";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    $listing = $res->fetch_assoc();
+
+    return $listing;
+
+  }
+
+  public function deletelisting()
+  {
+    $id = $_GET['id'];
+    $sql = "DELETE FROM `listing`";
+    $sql .= "WHERE id='$id'";
+    $con = $this->db();
+    $results = $con->query($sql);
+    if($results){
+      return "Success";
+    }else{
+        return "Error db";
+    }
+  }
+
 
 
 
