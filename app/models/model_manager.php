@@ -93,6 +93,22 @@ public function allusers()
 
 	}
 
+	public function listing()
+  	{
+	    $sql = "SELECT * FROM `listing`";
+	    $con  = $this->db();
+	    $res = $con->query($sql);
+	    if($res->num_rows>0){
+	    $all = array();
+	    while($result = $res->fetch_assoc()){
+	      $all[] = $result;
+	    }
+	      return $all;
+	    }else{
+	      return "error";
+	    }
+  	}
+
 
 
 

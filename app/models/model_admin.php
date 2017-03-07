@@ -377,8 +377,8 @@ public function make()
     $est = $_POST['est'];
     $usp = $_POST['usp'];
     $sql = "INSERT INTO `listing`";
-    $sql .= "(district, huttons, project_name, location, type, size, price, tenure, commission, contact_person, tagging, building_status, remarks, est, usp)";
-    $sql .= " VALUES ('$district', '$huttons', '$projectname', '$location', '$type', '$size', '$price', '$tenure', '$commission', '$contact_person', '$tagging', '$building_status', '$remarks', '$est', '$usp')";
+    $sql .= "(district, huttons, project_name, location, type, size, price, tenure, commission, contact_person, tagging, remarks, est, usp)";
+    $sql .= " VALUES ('$district', '$huttons', '$projectname', '$location', '$type', '$size', '$price', '$tenure', '$commission', '$contact_person', '$tagging', '$remarks', '$est', '$usp')";
     $con  = $this->db();
     $res = $con->query($sql);
     if($res){
@@ -389,7 +389,7 @@ public function make()
     
   }
 
-  public function reviewlisting()
+  public function editlisting()
   {
     $id = $_GET['id'];
     $sql = "SELECT * FROM `listing`";
@@ -400,6 +400,36 @@ public function make()
 
     return $listing;
 
+  }
+
+  public function updatelisting()
+  {
+    $id = $_POST['id'];
+    $district = $_POST['district'];
+    $huttons = $_POST['huttons'];
+    $projectname = $_POST['projectname'];
+    $type = $_POST['type'];
+    $size = $_POST['size'];
+    $price = $_POST['price'];
+    $tenure = $_POST['tenure'];
+    $commission = $_POST['commission'];
+    $contact_person = $_POST['contact_person'];
+    $tagging = $_POST['tagging'];
+    // $building_status = $_POST['building_status'];
+    $remarks = $_POST['remarks'];
+    $location = $_POST['location'];
+    $est = $_POST['est'];
+    $usp = $_POST['usp'];
+    $sql = "UPDATE `listing`";
+    $sql .= "SET district='$district', huttons='$huttons', project_name='$projectname', location='$location', type='$type', size='$size', price='$price', tenure='$tenure', commission='$commission', contact_person='$contact_person', tagging='$tagging', remarks='$remarks', est='$est', usp='$usp'";
+    $sql .= " WHERE id='$id'";   
+    $con  = $this->db();
+    $res = $con->query($sql);
+    if($res){
+      return 'Success';
+    }else{
+      return 'Error db';
+    }
   }
 
   public function deletelisting()
@@ -414,6 +444,42 @@ public function make()
     }else{
         return "Error db";
     }
+  }
+
+  public function saveexel($ar)
+  {
+  
+    foreach ($ar as $ar_item) {
+  
+    $district = $ar_item[0];
+    $huttons = $ar_item[1];
+    $projectname = $ar_item[2];
+    $location = $ar_item[3];
+    $type = $ar_item[4];
+    $size = $ar_item[5];
+    $price = $ar_item[6];
+    $tenure = $ar_item[7];
+    $commission = $ar_item[8];
+    $contact_person = $ar_item[9];
+    $tagging = $ar_item[10];
+    // $building_status = $ar_item[11];
+    $remarks = $ar_item[11];
+    $est = $ar_item[12];
+    $usp = $ar_item[13];
+      
+// var_dump($key);
+    
+    $sql = "INSERT INTO `listing`";
+    $sql .= "(district, huttons, project_name, location, type, size, price, tenure, commission, contact_person, tagging, remarks, est, usp)";
+      // foreach($key as $val){
+   
+    $sql .= " VALUES ('$district', '$huttons', '$projectname', '$location', '$type', '$size', '$price', '$tenure', '$commission', '$contact_person', '$tagging', '$remarks', '$est', '$usp')";
+   
+    $con = $this->db();
+    $results = $con->query($sql);
+
+  }
+
   }
 
 

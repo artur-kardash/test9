@@ -58,8 +58,8 @@
               <td> <?= $info['dob'] ?> </td>
               <td> <?= $info['phone'] ?> </td>
               <td> 
-                <a href="<?php echo $host; ?>/admin/reviewcust?id=<?php echo $info['id']; ?>"><input type="button" name="review" value="View/Edit"></a> 
-                <a href="<?php echo $host; ?>/admin/deletecust?id=<?php echo $info['id']; ?>"><input type="button" name="delete" value="Delete"></a> 
+                <a href="<?php echo $host; ?>/admin/reviewcust?id=<?php echo $info['id']; ?>"><input class="btn btn-info pull-left newbutton" type="button" name="review" value="View/Edit"></a> 
+                <a href="<?php echo $host; ?>/admin/deletecust?id=<?php echo $info['id']; ?>"><input class="btn btn-info pull-left newbutton" type="button" name="delete" value="Delete"></a> 
               </td>
             </tr>  
              <? endforeach; ?>

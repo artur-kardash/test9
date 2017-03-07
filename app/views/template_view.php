@@ -29,6 +29,14 @@
   <link rel="stylesheet" href="<?php echo $host; ?>/css/bootstrap-switch.min.css">
  
   <link rel="stylesheet" href="<?php echo $host; ?>/css/style.css" type="text/css" />
+
+<!-- <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+ 
+
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+ 
+
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script> -->
   <script src="<?php echo $host; ?>/assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
   <script src="<?php echo $host; ?>/assets/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
 
@@ -39,7 +47,8 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="<?php echo $body_class; ?>">
+<!-- <body class="<?php echo $body_class; ?>"> -->
+<body>
 <!-- Javascripts -->
 <script src="<?php echo $host; ?>/assets/plugins/jquery/jquery-2.1.4.min.js"></script>
 <script src="<?php echo $host; ?>/assets/plugins/bootstrap/js/bootstrap.min.js"></script>

@@ -26,8 +26,8 @@
       <td> <?= $inf['dob'] ?> </td>
       <td> <?= $inf['phone'] ?> </td>
       <td> 
-        <a href="<?php echo $host; ?>/user/review?id=<?php echo $inf['user_id']; ?>"><input type="button" name="review" value="View/Edit"></a> 
-        <a href="<?php echo $host; ?>/user/delete?id=<?php echo $inf['user_id']; ?>"><input type="button" name="delete" value="Delete"></a> 
+        <a href="<?php echo $host; ?>/user/review?id=<?php echo $inf['user_id']; ?>"><input type="button" class="btn btn-info pull-left newbutton" name="review" value="View/Edit"></a> 
+        <a href="<?php echo $host; ?>/user/delete?id=<?php echo $inf['user_id']; ?>"><input type="button" class="btn btn-info pull-left newbutton" name="delete" value="Delete"></a> 
       </td>
     </tr>  
      <? endforeach; ?>

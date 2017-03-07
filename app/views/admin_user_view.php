@@ -14,7 +14,7 @@
       <th width="20%">Name</th>
       <th width="20%">DOB</th>
       <th width="20%">Phone</th>
-      <th width="30%">Actions</th>
+      <th width="20%">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -26,8 +26,8 @@
       <td> <?= $inf['dob'] ?> </td>
       <td> <?= $inf['phone'] ?> </td>
       <td> 
-        <a href="<?php echo $host; ?>/admin/review?id=<?php echo $inf['user_id']; ?>"><input type="button" name="review" value="View/Edit"></a> 
-        <a href="<?php echo $host; ?>/admin/delete?id=<?php echo $inf['user_id']; ?>"><input type="button" name="delete" value="Delete"></a> 
+        <a href="<?php echo $host; ?>/admin/review?id=<?php echo $inf['user_id']; ?>"><input type="button" class="btn btn-info pull-left newbutton" name="review" value="View/Edit"></a> 
+        <a href="<?php echo $host; ?>/admin/delete?id=<?php echo $inf['user_id']; ?>"><input type="button" class="btn btn-info pull-left newbutton" name="delete" value="Delete"></a> 
       </td>
     </tr>  
      <? endforeach; ?>

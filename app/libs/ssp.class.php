@@ -251,7 +251,6 @@ class SSP {
 			 $order
 			 $limit";
     }
-
     $data = SSP::sql_exec( $db, $bindings,$query);
 
     // Data set length after filtering

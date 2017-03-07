@@ -53,10 +53,10 @@
             <label>FOC Tagging:</label>
               <input class="form-control" placeholder="FOC Tagging" type="text" name="tagging" >
             </div>
-              <div class="form-group">
+           <!--    <div class="form-group">
             <label>Building status:</label>
               <input class="form-control" placeholder="Building status" type="text" name="building_status" >
-            </div>
+            </div> -->
             <div class="form-group">
             <label>Remarks:</label>
               <input class="form-control" placeholder="Remarks" type="text" name="remarks" >

@@ -28,8 +28,8 @@
             
   </table>
            
-      <button style="margin-top:20px;" type="submit" name="id" value="<?php echo $data['inf']['id_ag']?>" data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</button>
-      <a href="<?php echo $host; ?>/manager/allusers"><input style="margin-top: 20px;" type="button" class="btn btn-primary" name="back" value="Back"></a>
+      <button style="margin-top:20px;" type="submit" name="id" value="<?php echo $data['inf']['id_ag']?>" data-toggle="modal" data-target="#edit" class="btn btn-primary newbutton">Edit</button>
+      <a href="<?php echo $host; ?>/manager/allusers"><input style="margin-top: 20px;" type="button" class="btn btn-primary newbutton" name="back" value="Back"></a>
      
 </div>
 

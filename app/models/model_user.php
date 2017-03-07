@@ -128,6 +128,79 @@ class Model_User extends Model {
 
 	}
 
+	public function listing()
+  	{
+	    $sql = "SELECT * FROM `listing`";
+	    $con  = $this->db();
+	    $res = $con->query($sql);
+	    if($res->num_rows>0){
+	    $all = array();
+	    while($result = $res->fetch_assoc()){
+	      $all[] = $result;
+	    }
+	      return $all;
+	    }else{
+	      return "error";
+	    }
+  	}
+
+  	 public function editlisting()
+  {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM `listing`";
+    $sql .= "WHERE id = '$id'";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    $listing = $res->fetch_assoc();
+
+    return $listing;
+
+  }
+
+  public function updatelisting()
+  {
+    $id = $_POST['id'];
+    $district = $_POST['district'];
+    $huttons = $_POST['huttons'];
+    $projectname = $_POST['projectname'];
+    $type = $_POST['type'];
+    $size = $_POST['size'];
+    $price = $_POST['price'];
+    $tenure = $_POST['tenure'];
+    $commission = $_POST['commission'];
+    $contact_person = $_POST['contact_person'];
+    $tagging = $_POST['tagging'];
+    // $building_status = $_POST['building_status'];
+    $remarks = $_POST['remarks'];
+    $location = $_POST['location'];
+    $est = $_POST['est'];
+    $usp = $_POST['usp'];
+    $sql = "UPDATE `listing`";
+    $sql .= "SET district='$district', huttons='$huttons', project_name='$projectname', location='$location', type='$type', size='$size', price='$price', tenure='$tenure', commission='$commission', contact_person='$contact_person', tagging='$tagging', remarks='$remarks', est='$est', usp='$usp'";
+    $sql .= " WHERE id='$id'";   
+    $con  = $this->db();
+    $res = $con->query($sql);
+    if($res){
+      return 'Success';
+    }else{
+      return 'Error db';
+    }
+  }
+
+  public function deletelisting()
+  {
+    $id = $_GET['id'];
+    $sql = "DELETE FROM `listing`";
+    $sql .= "WHERE id='$id'";
+    $con = $this->db();
+    $results = $con->query($sql);
+    if($results){
+      return "Success";
+    }else{
+        return "Error db";
+    }
+  }
+
 
 
 

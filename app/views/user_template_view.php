@@ -167,7 +167,7 @@
               <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
             </li>
             <li>
-              <a href="/admin/logout" class="log-out waves-effect waves-button waves-classic">
+              <a href="/user/logout" class="log-out waves-effect waves-button waves-classic">
                 <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
               </a>
             </li>
@@ -192,8 +192,8 @@
       <?php }  else echo "<br>"; ?>
       <ul class="menu accordion-menu">
 
-        <li><a href="/admin/dashboard" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
-        <li class=""><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list-alt"></span><p>Listings available</p></a>
+        <li><a href="/user/dashboard" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
+        <li class=""><a href="/user/listing" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list-alt"></span><p>Listings available</p></a>
          <!--  <ul class="sub-menu">
           <li><a href="/clients/">Clients</a>
           <li><a href="<?php echo __HOST__; ?>/Leads_Limits/">Clients Caps</a> </li>
