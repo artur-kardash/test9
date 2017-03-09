@@ -281,6 +281,30 @@ echo json_encode(
 exit();
   }
 
+  function action_sinc()
+  {
+    $data['title'] = "Sinc";
+    $this->view->generate("sinc_view.php", "template_view.php", $data); 
+  }
+
+  function action_ressync()
+  {
+    $res = $this->model->ressync();
+    if($res == FALSE){
+      $data['error'] == "Sorry, but no matches found";
+      $this->view->generate("sincresult_view.php", "template_view.php", $data); 
+    }else{
+      $data['res'] = $res;
+      $this->view->generate("sincresult_view.php", "template_view.php", $data); 
+    }
+  }
+
+  function action_appointment()
+  {
+    $data['title'] = "appointment";
+    $this->view->generate("appoinment_view.php", "template_view.php", $data); 
+  }
+
 
 
 

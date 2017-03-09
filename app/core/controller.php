@@ -58,7 +58,7 @@ class Controller {
 	
 	function action_index()
 	{
-
+	    header('Location:/login'); 
 	}
 	public function db()
 	{

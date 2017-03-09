@@ -178,5 +178,26 @@ exit();
     header('Location:/login');
   }
 
+  function action_sinc()
+  {
+    $data['title'] = "Sinc";
+    $this->view->generate("user_sinc_view.php", "user_template_view.php", $data); 
+  }
+
+  function action_ressync()
+  {
+    $res = $this->model->ressync();
+    if($res == FALSE){
+      $data['error'] == "Sorry, but no matches found";
+      $this->view->generate("user_sincres_view.php", "user_template_view.php", $data); 
+    }else{
+      $data['res'] = $res;
+      $this->view->generate("user_sincres_view.php", "user_template_view.php", $data); 
+    }
+  }
+
+
+
+
 
 }

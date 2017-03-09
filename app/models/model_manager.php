@@ -109,6 +109,29 @@ public function allusers()
 	    }
   	}
 
+  	public function ressync()
+  	{
+    $district = trim($_POST['district']);
+    $type = trim($_POST['type']);
+    $size = trim($_POST['size']);
+    $price = trim($_POST['price']);
+    $tenure = trim($_POST['tenure']);
+
+    $sql = "SELECT * FROM `listing`";
+    $sql .= " WHERE district LIKE '%$district%' AND type LIKE '%$type%' AND size LIKE '%$size%' AND price LIKE '%$price%' AND tenure LIKE '%$tenure%'";
+    $con = $this->db();
+    $res = $con->query($sql);
+    if($res->num_rows>0){
+      $all = array();    
+      while($result = $res->fetch_assoc()){
+        $all[] = $result;
+      }
+      return $all;
+    }else{
+      return FALSE;
+    }
+  	}
+
 
 
 

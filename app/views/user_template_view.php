@@ -205,7 +205,7 @@
 <!--            <li><a href="ui-icons">Icons</a></li>-->
 <!--          </ul>-->
         </li>
-        <li><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-resize-horizontal"></span><p>Synchronization</p></a></li>
+        <li><a href="<?php echo __HOST__; ?>/user/sinc" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-resize-horizontal"></span><p>Synchronization</p></a></li>
 
         <li><a href="<?php echo __HOST__; ?>/user/allusers" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th"></span><p>Contact list</p></a></li>
         

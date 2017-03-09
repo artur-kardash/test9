@@ -7,3 +7,4 @@ tags
 ftpsync.settings
 credentials.php
 logs/*
+/vendor/

@@ -141,5 +141,24 @@ exit();
     header('Location:/login');
   }
 
+  function action_sinc()
+  {
+    $data['title'] = "Sinc";
+    $this->view->generate("manager_sinc_view.php", "manager_template_view.php", $data); 
+  }
+
+  function action_ressync()
+  {
+    $res = $this->model->ressync();
+    if($res == FALSE){
+      $data['error'] == "Sorry, but no matches found";
+      $this->view->generate("manager_sincresult_view.php", "manager_template_view.php", $data); 
+    }else{
+      $data['res'] = $res;
+      $this->view->generate("manager_sincresult_view.php", "manager_template_view.php", $data); 
+    }
+  }
+
+
 
 }
