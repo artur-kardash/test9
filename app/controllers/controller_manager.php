@@ -143,6 +143,12 @@ exit();
 
   function action_sinc()
   {
+    $results = $this->model->allsize();
+    $data['size'] = $results;
+    $result = $this->model->alltype();
+    $data['type'] = $result;
+    $res = $this->model->allproject();
+    $data['inf'] = $res;
     $data['title'] = "Sinc";
     $this->view->generate("manager_sinc_view.php", "manager_template_view.php", $data); 
   }

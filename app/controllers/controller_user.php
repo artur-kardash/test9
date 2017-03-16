@@ -180,6 +180,12 @@ exit();
 
   function action_sinc()
   {
+    $results = $this->model->allsize();
+    $data['size'] = $results;
+    $result = $this->model->alltype();
+    $data['type'] = $result;
+    $res = $this->model->allproject();
+    $data['inf'] = $res;
     $data['title'] = "Sinc";
     $this->view->generate("user_sinc_view.php", "user_template_view.php", $data); 
   }
@@ -195,6 +201,60 @@ exit();
       $this->view->generate("user_sincres_view.php", "user_template_view.php", $data); 
     }
   }
+
+  function action_allclients()
+  {
+    $res = $this->model->allclients();
+    $data['inf'] = $res;
+    $data['title'] = "All clients";
+    $this->view->generate("user_allclients_view.php", "user_template_view.php", $data); 
+  }
+
+  function action_editclient()
+  {
+    $res = $this->model->editclients();
+    $data['inf'] = $res;
+    $data['title'] = "Edit client";
+    $this->view->generate("user_editclient_view.php", "user_template_view.php", $data); 
+  }
+
+  function action_updateclient()
+  {
+      $res = $this->model->updateclient();
+    if($res){
+       header('Location:/user/allusers');
+    }else{
+      echo "Error";
+    }
+  }
+
+  function action_deleteclient()
+  {
+    $res = $this->model->deletecli();
+    if($res){
+    header('Location:/user/allusers');
+    }else{
+      echo "Error db";
+    }
+  }
+
+  function action_addcli()
+  {
+    $data['title'] = 'Add new client';
+    $this->view->generate("user_addnewclient_view.php", "user_template_view.php", $data);
+
+  }
+
+   function action_addnewclient()
+  {
+    $res = $this->model->addclient();
+    if($res){
+      header('Location:/user/allusers');
+    }else{
+      return 'Error db';
+    }
+  }
+
 
 
 

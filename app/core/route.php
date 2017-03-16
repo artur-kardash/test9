@@ -14,14 +14,15 @@ class Route
 		{
 			$controller_name = $routes[1];
 		}
-
+// var_dump($controller_name);
+// 		exit();
 		// получаем имя экшена
 		if ( !empty($routes[2]) )
 		{
 			$action_name = explode('?', $routes[2]);
       		$action_name = $action_name[0];
-//      var_dump($action_name);
-//      exit();
+		// var_dump($action_name);
+		// exit();
 		}
 
 		// добавляем префиксы

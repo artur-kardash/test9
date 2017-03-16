@@ -10,25 +10,32 @@
           <div class="widget-body">
               <input type="hidden" value="<?php echo $_GET['id']?>" name="id">
             <div class="form-group">
+            <label>First name</label>
               <input class="form-control" placeholder="Firstname" type="text" name="firstname" required>
             </div>
             <div class="form-group">
+            <label>Last name</label>
               <input class="form-control" placeholder="Lastname" type="text" name="lastname" required>
             </div>
-             <div class="form-group">
-              <input class="form-control" placeholder="Project name" type="text" name="projectname" >
-            </div>
             <div class="form-group">
+            <label>Date of Birth</label>
               <input class="form-control" placeholder="Date & time" type="date" name="d&t">
             </div>
             <div class="form-group">
+            <label>Phone number</label>
               <input class="form-control" placeholder="Phone" type="text" name="phone" >
             </div>
             <div class="form-group">
+            <label>Email</label>
               <input class="form-control" placeholder="Email" type="email" name="email" required>
             </div>
              <div class="form-group">
-              <input class="form-control" placeholder="Remarks" type="text" name="remark" >
+            <label>Development name</label>
+              <input class="form-control" placeholder="Development name" type="text" name="development" >
+            </div>
+            <div class="form-group">
+            <label>Investment/own stay</label>
+              <input class="form-control" placeholder="Investment/own stay" type="text" name="investment" >
             </div>
           </div>
           <div class="actions">

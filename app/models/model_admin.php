@@ -267,16 +267,22 @@ public function countclent()
 
 public function addclient()
 {
-    $id = $_POST['id'];
+
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $dt = $_POST['d&t'];
     $phone = $_POST['phone'];
-    $projectname = $_POST['projectname'];
+    $development = $_POST['development'];
     $email = $_POST['email'];
-    $remark = $_POST['remark'];
+    $investment = $_POST['investment'];
+ if(!empty($_POST['id'])){
+    $id = $_POST['id'];
+    $sql = "INSERT INTO `clients`(email, firstname, lastname, date_time, phone, development, investment, superuser_id) VALUES ('$email', '$firstname', '$lastname', '$dt', '$phone', '$development', '$investment', '$id')";
+  }else{
+    $id = $_COOKIE['user_id'];
+    $sql = "INSERT INTO `clients`(email, firstname, lastname, date_time, phone, development, investment, admin_id) VALUES ('$email', '$firstname', '$lastname', '$dt', '$phone', '$development', '$investment', '$id')";
+  }
 
-    $sql = "INSERT INTO `clients`(email, firstname, lastname, date_time, phone, projectname, remarks, superuser_id) VALUES ('$email', '$firstname', '$lastname', '$dt', '$phone', '$projectname', '$remark', '$id')";
     $con  = $this->db();
     $res = $con->query($sql);
    
@@ -457,7 +463,8 @@ public function make()
     $location = $ar_item[3];
     $type = $ar_item[4];
     $size = $ar_item[5];
-    $price = $ar_item[6];
+    $price = trim($ar_item[6]);
+    $price = substr($price, 1);
     $tenure = $ar_item[7];
     $commission = $ar_item[8];
     $contact_person = $ar_item[9];
@@ -481,16 +488,139 @@ public function make()
     }
   }
 
+  public function allproject()
+  {
+    $sql = "SELECT `project_name` FROM `listing`";
+    $sql .= "WHERE project_name<>''";
+    $sql .= "GROUP BY `project_name`";
+    $con = $this->db();
+    $res = $con->query($sql);
+    $all = array();    
+      while($result = $res->fetch_assoc()){
+        $all[] = $result;
+      }
+      return $all;
+  }
+
+  public function allsize()
+  {
+    $sql = "SELECT `size` FROM `listing`";
+    // $sql .= "WHERE size<>''";
+    $sql .= "GROUP BY `size`";
+    $con = $this->db();
+    $res = $con->query($sql);
+    $all = array();    
+      while($result = $res->fetch_assoc()){
+        $all[] = $result;
+      }
+      return $all;
+  }
+
+  public function alltype()
+  {
+    $sql = "SELECT `type` FROM `listing`";
+    $sql .= "WHERE type<>''";
+    $sql .= "GROUP BY `type`";
+    $con = $this->db();
+    $res = $con->query($sql);
+    $all = array();    
+      while($result = $res->fetch_assoc()){
+        $all[] = $result;
+      }
+      return $all;
+  }
+
+
+
   public function ressync()
   {
+
+    // var_dump($_POST);
+    // exit();
+    
+    $project = trim($_POST['project']);
     $district = trim($_POST['district']);
-    $type = trim($_POST['type']);
-    $size = trim($_POST['size']);
-    $price = trim($_POST['price']);
     $tenure = trim($_POST['tenure']);
+    $size = trim($_POST['size']);
+    $type = trim($_POST['type']);
+    // $tenure = trim($_POST['tenure']);
+      $a = "district = '$district' AND";
+      $b = "project_name = '$project' AND";
+      $c = "tenure = '$tenure' AND";
+      $d = "size = '$size' AND";
+      $e = "type = '$type' AND";
+
+
+  if(empty($_POST['district'])){
+    unset($a);
+  }
+  if(empty($_POST['project'])){
+    unset($b);
+  }
+  if(empty($_POST['tenure'])){
+    unset($c);
+  }
+  if(empty($_POST['size'])){
+    unset($d);
+  }
+  if(empty($_POST['type'])){
+    unset($e);
+  }
+
+$k="";
+if(empty($_POST['type']) && empty($_POST['district']) && empty($_POST['project']) && empty($_POST['tenure']) && empty($_POST['size'])){
+  $k = "AND";
+}else{
+  unset($k);
+}
+$f = "";
+if($_POST['price'] == 'below 500'){
+  $f = "price >= '500'";
+}else if($_POST['price'] == '500-1'){
+  $f = "price BETWEEN '500' AND '1000000'";
+}else if($_POST['price'] == '1-2'){
+  $f = "price BETWEEN '1000000' AND '2000000'";
+}else if($_POST['price'] == '2-3'){
+  $f = "price BETWEEN '2000000' AND '3000000'";
+}else{
+  $f = "price >='3000000'";
+}
+
+if(empty($_POST['price'])){
+  unset($f);
+}
+//     $sqlq = "SELECT `price` FROM `listing`";
+//     $con = $this->db();
+//     $res = $con->query($sqlq);
+//     $all = array();
+//     while($result = $res->fetch_assoc()){
+//       $all[] = $result;
+//     }
+// foreach($all as $alls){
+//     var_dump($alls['price']);
+
+// }
+//     exit();
 
     $sql = "SELECT * FROM `listing`";
-    $sql .= " WHERE district LIKE '%$district%' AND type LIKE '%$type%' AND size LIKE '%$size%' AND price LIKE '%$price%' AND tenure LIKE '%$tenure%'";
+    if($_POST['price'] == 'below 500'){
+    $sql .= " WHERE $a $c $d $e $b $f";
+    }else if($_POST['price'] == '500-1'){
+      $sql .= " WHERE $a $c $d $e $b $f";
+    }else if($_POST['price'] == '1-2'){
+      $sql .= " WHERE $a $c $d $e $b $f";
+    }else if($_POST['price'] == '2-3'){
+      $sql .= " WHERE $a $c $d $e $b $f";
+    }else{
+      $sql .= " WHERE $a $c $d $e $b $f";
+    }
+
+    if(empty($_POST['price'])){
+    $sql = substr($sql, 0, -8);
+    }
+    // var_dump($sql);
+    // exit();
+    // $sql .= " WHERE district LIKE '%$district%' AND type LIKE '%$type%' AND size LIKE '%$size%' AND price LIKE '%$price%' AND tenure LIKE '%$tenure%'";
     $con = $this->db();
     $res = $con->query($sql);
     if($res->num_rows>0){
@@ -501,6 +631,78 @@ public function make()
       return $all;
     }else{
       return FALSE;
+    }
+  }
+
+
+  public function allclients()
+  {
+    $id = $_COOKIE['user_id'];
+    $sql = "SELECT * FROM `clients`";
+    $sql .= "WHERE admin_id='$id'";
+    $con = $this->db();
+    $res = $con->query($sql);
+    $all = array();
+    if($res->num_rows>0){
+      while ($result = $res->fetch_assoc()) {
+       $all[] = $result; 
+      }
+      return $all;
+    }else{
+      return "error";
+    }
+  }
+
+  public function editclients()
+  {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM `clients`";
+    $sql .= "WHERE id = '$id'";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    $client = $res->fetch_assoc();
+
+    return $client; 
+  }
+
+  public function updateclient()
+  {
+ 
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $date = $_POST['date_time'];
+    $phone = $_POST['phone'];
+    $id = $_POST['id'];
+    $email = $_POST['email'];
+    $development = $_POST['development'];
+    $investment = $_POST['investment'];
+    
+    $sql = "UPDATE `clients`";
+    $sql .= " SET firstname='$firstname', lastname='$lastname', date_time='$date', phone='$phone', email='$email', development='$development', investment='$investment'";
+    $sql .= " WHERE id='$id'";
+    $con = $this->db();
+    $res = $con->query($sql);
+
+    if($res){
+      return 'Success';
+    }else{
+      return 'Error db';
+    }
+
+  }
+
+  public function deletecli()
+  {
+    $id = $_GET['id'];
+    $sql = "DELETE FROM `clients`";
+    $sql .= "WHERE id='$id'";
+    $con = $this->db();
+    $res = $con->query($sql);
+ 
+    if($res){
+        return "Success";
+    }else{
+        return "Error db";
     }
   }
 

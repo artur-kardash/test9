@@ -1,6 +1,8 @@
 <?php
 class Controller_Calendar extends Controller
 {
+
+
   // function __construct()
   // {
    
@@ -9,9 +11,14 @@ class Controller_Calendar extends Controller
 
   function action_index()
   {
-    echo "7777777";
+    $code = $_GET['code'];
+    $url = 'https://accounts.google.com/o/oauth2/token';
+    var_dump($_GET);
+    var_dump($url);
+    exit('7');
+    
   }
-
+ 
 
 
 }

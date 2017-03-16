@@ -328,10 +328,10 @@
 <script src="<?php echo $host; ?>/assets/js/modern.min.js"></script>
 <script src="<?php echo $host; ?>/js/bootstrap-switch.min.js"></script>
 <script src="<?php echo $host; ?>/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script>
+<!--   <script>
     $(document).ready(function(){
       $("select, input:radio, input:file").uniform();
     });
-  </script>
+  </script> -->
 </body>
 </html>

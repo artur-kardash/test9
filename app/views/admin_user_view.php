@@ -2,6 +2,7 @@
 
 <div class="form-group add">
    <a href="<?php echo $host . "/admin/adduser"; ?>"><input type="submit" class="btn btn-primary newbutton"  value="Add new superuser" ></a>
+    <a href="<?php echo $host . "/admin/allclients"; ?>"><input type="submit" class="btn btn-primary newbutton"  value="All clients" ></a>
 </div>
 <br/>
 <?php if($data['all'] == 'You don`t have a clients!'){ ?>

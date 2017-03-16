@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
-
+// google-api-php
+// require_once __DIR__ .'/google-api-php/src/Google/autoload.php';
+// require_once '/path/to/google-api-php-client/vendor/autoload.php';
 
 define('APPLICATION_NAME', 'Google Calendar API PHP Quickstart');
 define('CREDENTIALS_PATH', '~/.credentials/calendar-php-quickstart.json');
@@ -11,9 +13,9 @@ define('SCOPES', implode(' ', array(
   Google_Service_Calendar::CALENDAR_READONLY)
 ));
 
-if (php_sapi_name() != 'cli') {
-  throw new Exception('This application must be run on the command line.');
-}
+// if (php_sapi_name() != 'cli') {
+//   throw new Exception('This application must be run on the command line.');
+// }
 
 /**
  * Returns an authorized API client.

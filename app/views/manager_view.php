@@ -10,23 +10,27 @@
 <table>
   <thead>
     <tr>
-      <th width="5%" >ID</th>
-      <th width="20%">Name</th>
-      <th width="20%">DOB</th>
-      <th width="20%">Phone</th>
-      <th width="30%">Actions</th>
+      <th width="12%" >Name</th>
+      <th width="12%">Phone</th>
+      <th width="14%">Email</th>
+      <th width="12%">Development name</th>
+      <th width="10%">Date of Birth</th>
+      <th width="12%">Investment/own stay</th>
+      <th width="12%">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr>
 
     <? foreach($data['all'] as $inf) :?>
-      <td> <?= $inf['id'] ?> </td>
       <td> <?= $inf['firstname']." ".$inf['lastname'] ?> </td>
-      <td> <?= $inf['date_time'] ?> </td>
       <td> <?= $inf['phone'] ?> </td>
+      <td> <?= $inf['email'] ?> </td>
+      <td> <?= $inf['development'] ?> </td>
+      <td> <?= $inf['date_time'] ?> </td>
+      <td> <?= $inf['investment'] ?> </td>
       <td> 
-        <a href="<?php echo $host; ?>/manager/review?id=<?php echo $inf['id']; ?>"><input type="button" class="btn btn-info pull-left newbutton" name="review" value="View/Edit"></a> 
+        <a href="<?php echo $host; ?>/manager/review?id=<?php echo $inf['id']; ?>"><input type="button" class="btn btn-info pull-left newbutton" name="review" value="Edit"></a> 
         <a href="<?php echo $host; ?>/manager/delete?id=<?php echo $inf['id']; ?>"><input type="button" class="btn btn-info pull-left newbutton" name="delete" value="Delete"></a> 
       </td>
     </tr>  

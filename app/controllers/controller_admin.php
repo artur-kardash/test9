@@ -224,7 +224,7 @@ class Controller_Admin extends Controller
     $uploadfile = "files/".$_FILES['userfile']['name'];
     move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
 
-    require_once '/PHPExcel.php';
+    require_once 'PHPExcel.php';
     $ar=array();
     $inputFileType = PHPExcel_IOFactory::identify($uploadfile);
     $objReader = PHPExcel_IOFactory::createReader($inputFileType);
@@ -283,6 +283,12 @@ exit();
 
   function action_sinc()
   {
+    $results = $this->model->allsize();
+    $data['size'] = $results;
+    $result = $this->model->alltype();
+    $data['type'] = $result;
+    $res = $this->model->allproject();
+    $data['inf'] = $res;
     $data['title'] = "Sinc";
     $this->view->generate("sinc_view.php", "template_view.php", $data); 
   }
@@ -305,6 +311,41 @@ exit();
     $this->view->generate("appoinment_view.php", "template_view.php", $data); 
   }
 
+  function action_allclients()
+  {
+    $res = $this->model->allclients();
+    $data['inf'] = $res;
+    $data['title'] = "All clients";
+    $this->view->generate("allclients_view.php", "template_view.php", $data); 
+  }
+
+  function action_editclient()
+  {
+    $res = $this->model->editclients();
+    $data['inf'] = $res;
+    $data['title'] = "Edit client";
+    $this->view->generate("editclient_view.php", "template_view.php", $data); 
+  }
+
+  function action_updateclient()
+  {
+      $res = $this->model->updateclient();
+    if($res){
+       header('Location:/admin/allusers');
+    }else{
+      echo "Error";
+    }
+  }
+
+  function action_deleteclient()
+  {
+    $res = $this->model->deletecli();
+    if($res){
+    header('Location:/admin/allusers');
+    }else{
+      echo "Error db";
+    }
+  }
 
 
 

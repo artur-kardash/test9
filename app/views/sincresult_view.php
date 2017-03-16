@@ -33,15 +33,10 @@
 
     <? foreach($data['res'] as $inf) :?>
           <td class=""><?= $inf['district'] ?></td>
-
           <td class="inputfield"><?= $inf['huttons'] ?></td>
-
           <td class=""><?= $inf['project_name'] ?></td>
-
           <td class=""><?= $inf['location'] ?></td>
-
           <td class=""><?= $inf['type'] ?></td>
-
           <td class=""><?= $inf['size'] ?></td>
           <td class=""><?= $inf['price'] ?></td>
           <td class=""><?= $inf['tenure'] ?></td>
