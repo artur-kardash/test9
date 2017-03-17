@@ -12,7 +12,7 @@
 	<h3>You don`t have a listing!</h3>
 <?php }else{?>
 
-
+ 
 
 <!-- <div id="listing" style="margin-left: -22px;">
 <table>
@@ -40,7 +40,7 @@
   <tbody>
     <tr>
 
-    <? foreach($data['all'] as $inf) :?>
+    <? // foreach($data['all'] as $inf) :?>
           <td class=""><?= $inf['district'] ?></td>
 
           <td class="inputfield"><?= $inf['huttons'] ?></td>
@@ -69,7 +69,7 @@
             
           </td>
         </tr> 
-        <? endforeach; ?> 
+        <? // endforeach; ?> 
   </tbody>
 </table>
 </div> -->
@@ -103,7 +103,17 @@
   </div>
 </div>
 
+  <?php 
+foreach ($data['all'] as $key) {
+  // foreach($key as $val){
+  //   var_dump($val);
+  // }
+// echo "<pre>";
+// var_dump($key['district']);
+  $i.= '<option value="">'.$key["district"].'</option>';
+}
 
+ ?>
 
 <div class="data_table">
 <table id="example" class="display" width="100%" cellspacing="0">
@@ -129,7 +139,7 @@
   </thead>
   <tfoot>
   <tr>
-    <!--   <th>id</th>
+      <th>id</th>
       <th>district</th>
       <th>huttons</th>
       <th>Projectname</th>
@@ -144,12 +154,11 @@
       <th>building_status</th>
       <th>remarks</th>
       <th>est</th>
-      <th>usp</th> -->
+      <th>usp</th>
   </tr>
   </tfoot>
 </table>
     </div>
-
 
 
     <script type="text/javascript">
@@ -165,11 +174,120 @@
       //           });   
       //   });
 $(document).ready(function() {
-    $('#example').DataTable( {
+   table = $('#example').DataTable( {
         "processing": true,
         "serverSide": true,
-        "ajax": "<?php echo $host . "/admin/"; ?>table"
+        "ajax": "<?php echo $host . "/admin/"; ?>table",
+
+         "initComplete": function () {
+        var r = $('#example tfoot tr');
+        r.find('th').each(function(){
+          $(this).css('padding', 8);
+        });
+        $('#example thead').append(r);
+        $('input').css('text-align', 'center');
+      },
     } );
+
+
+
+$('#example tfoot th').each( function () {
+        var title = $('#example tfoot tr:eq(0) th').eq( $(this).index() ).text();
+        var html_string = '';
+        var input_style = ' style="width:100%; padding:1px !important; margin-left:-2px; margin-bottom: 0px;"';
+        var select_style = ' style="width:100%; padding:1px; margin-left:-2px; margin-bottom: 0px; height: 24px;"';
+     
+          if($(this).index() == 1){
+          html_string = '<select ' + select_style + '>' +
+          '<option value="">Select Status...</option>' +
+            '<?php echo $i ?>' +
+          '</select>';
+          }
+          if($(this).index() == 2){
+            html_string = '<select ' + select_style + '>' +
+
+          '<option value="">Select Status...</option>' + 
+          '<option value="Developer">Developer</option>' +
+          '<option value="Huttons\nSpecial Arrangmen">Huttons Special Arrangmen</option>' +
+          '<option value="Huttons">Huttons</option>' +
+          '<option value="Non-Htns">Non-Htns</option>' +
+          '</select>';
+          }else if($(this).index() == 8){
+            html_string = '<select ' + select_style + '>' +
+
+          '<option value="">Select Status...</option>' + 
+          '<option value="FH">Freehold</option>' +
+          '<option value="99">99 yrs</option>' +
+          '<option value="999">999 yrs</option>' +
+          '</select>';
+          }else if($(this).index() == 11){
+            html_string = '<select ' + select_style + '>' +
+
+          '<option value="">Select Status...</option>' + 
+          '<option value="YES">YES</option>' +
+          '<option value="FOC">FOC</option>' +
+          '</select>';
+          }else if($(this).index() == 12){
+            html_string = '<select ' + select_style + '>' +
+
+          '<option value="">Select Status...</option>' + 
+          '<option value="2017">2017</option>' +
+          '<option value="Near TOP">Near TOP</option>' +
+          '<option value="TOP">TOP</option>' +
+          '<option value="U/C">U/C</option>' +
+          '</select>';
+          }
+
+
+//            console.log(this);
+//            var select = $('<select style="width:auto; padding:1px; margin-left:-2px; margin-bottom: 0px; height: 24px;"><option value="">Select Status...</option><option value="0">Request Approved</option><option value="1">Request Disapproved</option><option value="2">Requesting to Reject</option></select>').appendTo($(this)).on('change',
+//                function (){
+//                var val = $.fn.dataTable.util.escapeRegex(
+//                    $(this).val()
+//                );
+////                $(this)
+////                    .search(val ? '^' + val + '$' : '', true, false)
+////                    .draw();
+//            });
+        // }
+        // else if ( $(this).index() < 5 ){
+        //   html_string = '<input type="text" ' + input_style + ' placeholder="Search ' + $.trim(title) + '"/>';
+        // }
+
+        $(this).html(html_string);
+        // $(this).html( '<input class="searchbox" type="text" placeholder="Search '+title+'" />' );
+      } );
+
+ table.columns().eq( 0 ).each( function ( colIdx ) {
+        $( 'input, select', table.column( colIdx ).footer() ).on( 'keyup change', function () {
+          if(colIdx == 2){
+            table
+              .column( colIdx )
+              .search(this.value)
+              .draw();
+          }else if(colIdx == 8){
+            table
+              .column( colIdx )
+              .search(this.value)
+              .draw();
+          }else if(colIdx == 11){
+            table
+              .column( colIdx )
+              .search(this.value)
+              .draw();
+          }else if(colIdx == 12){
+            table
+              .column( colIdx )
+              .search(this.value)
+              .draw();
+          }
+        } );
+    } );
+
+
+
+
+
 } );
 
 
@@ -177,3 +295,4 @@ $(document).ready(function() {
 
 
     </script>
+ 
