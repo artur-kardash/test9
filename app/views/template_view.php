@@ -329,7 +329,7 @@
 <script src="<?php echo $host; ?>/assets/plugins/switchery/switchery.min.js"></script>
 <script src="<?php echo $host; ?>/assets/plugins/uniform/jquery.uniform.min.js"></script>
 <script src="<?php echo $host; ?>/assets/plugins/offcanvasmenueffects/js/classie.js"></script>
-<script src="<?php echo $host; ?>/assets/plugins/offcanvasmenueffects/js/main.js"></script>
+<!--<script src="--><?php //echo $host; ?><!--/assets/plugins/offcanvasmenueffects/js/main.js"></script>-->
 <script src="<?php echo $host; ?>/assets/plugins/waves/waves.min.js"></script>
 <script src="<?php echo $host; ?>/assets/plugins/3d-bold-navigation/js/main.js"></script>
 <script src="<?php echo $host; ?>/assets/js/modern.min.js"></script>
