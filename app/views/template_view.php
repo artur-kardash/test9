@@ -226,7 +226,7 @@
 
           </ul> -->
         </li>
-        <li><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-calendar"></span><p>Calendar</p></a>
+        <li><a href="<?php echo __HOST__; ?>/admin/calendar" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-calendar"></span><p>Calendar</p></a>
 <!--          <ul class="sub-menu">-->
 <!--            <li><a href="charts-sparkline">Sparkline</a></li>-->
 <!--            <li><a href="charts-rickshaw">Rickshaw</a></li>-->

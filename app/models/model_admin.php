@@ -351,7 +351,8 @@ public function make()
 
   public function alllisting()
   {
-    $sql = "SELECT * FROM `listing`";
+    $sql = "SELECT `district` FROM `listing`";
+    $sql .= "GROUP BY `district`";
     $con  = $this->db();
     $res = $con->query($sql);
     if($res->num_rows>0){
@@ -363,6 +364,140 @@ public function make()
     }else{
       return "error";
     }
+  }
+
+  public function allprojects()
+  {
+    $sql = "SELECT `project_name` FROM `listing`";
+    $sql .= "GROUP BY `project_name`";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    if($res->num_rows>0){
+    $all = array();
+    while($result = $res->fetch_assoc()){
+      $all[] = $result;
+    }
+      return $all;
+    }else{
+      return "error";
+    }
+  }
+
+  public function allloc()
+  {
+    $sql = "SELECT `location` FROM `listing`";
+    $sql .= "GROUP BY `location`";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    if($res->num_rows>0){
+    $all = array();
+    while($result = $res->fetch_assoc()){
+      $all[] = $result;
+    }
+      return $all;
+    }else{
+      return "error";
+    }
+  }
+
+  public function alltypes()
+  {
+    $sql = "SELECT `type` FROM `listing`";
+    $sql .= "GROUP BY `type`";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    if($res->num_rows>0){
+    $all = array();
+    while($result = $res->fetch_assoc()){
+      $all[] = $result;
+    }
+      return $all;
+    }else{
+      return "error";
+    }
+  }
+
+  public function allsizes()
+  {
+    $sql = "SELECT `size` FROM `listing`";
+    $sql .= "GROUP BY `size`";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    if($res->num_rows>0){
+    $all = array();
+    while($result = $res->fetch_assoc()){
+      $all[] = $result;
+    }
+      return $all;
+    }else{
+      return "error";
+    } 
+  }
+
+  public function allcom()
+  {
+    $sql = "SELECT `commission` FROM `listing`";
+    $sql .= "GROUP BY `commission`";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    if($res->num_rows>0){
+    $all = array();
+    while($result = $res->fetch_assoc()){
+      $all[] = $result;
+    }
+      return $all;
+    }else{
+      return "error";
+    } 
+  }
+
+  public function allcon()
+  {
+    $sql = "SELECT `contact_person` FROM `listing`";
+    $sql .= "GROUP BY `contact_person`";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    if($res->num_rows>0){
+    $all = array();
+    while($result = $res->fetch_assoc()){
+      $all[] = $result;
+    }
+      return $all;
+    }else{
+      return "error";
+    } 
+  }
+  public function allest()
+  {
+    $sql = "SELECT `est` FROM `listing`";
+    $sql .= "GROUP BY `est`";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    if($res->num_rows>0){
+    $all = array();
+    while($result = $res->fetch_assoc()){
+      $all[] = $result;
+    }
+      return $all;
+    }else{
+      return "error";
+    } 
+  }
+  public function allusp()
+  {
+    $sql = "SELECT `usp` FROM `listing`";
+    $sql .= "GROUP BY `usp`";
+    $con  = $this->db();
+    $res = $con->query($sql);
+    if($res->num_rows>0){
+    $all = array();
+    while($result = $res->fetch_assoc()){
+      $all[] = $result;
+    }
+      return $all;
+    }else{
+      return "error";
+    } 
   }
 
   public function addnewlisting()
@@ -456,7 +591,6 @@ public function make()
   {
   
     foreach ($ar as $ar_item) {
-  
     $district = $ar_item[0];
     $huttons = $ar_item[1];
     $projectname = $ar_item[2];
@@ -473,13 +607,25 @@ public function make()
     $remarks = $ar_item[11];
     $est = $ar_item[12];
     $usp = $ar_item[13];
-      
-// var_dump($key);
-    
+  
+  $contact_person = str_replace(array("\n\r", "\n", "\r"), " ", $contact_person);
+  $type = str_replace(array("\n\r", "\n", "\r"), " ", $type);
+  $projectname = str_replace(array("\n\r", "\n", "\r"), " ", $projectname);
+  $district = str_replace(array("\n\r", "\n", "\r"), " ", $district);
+  $huttons = str_replace(array("\n\r", "\n", "\r"), " ", $huttons);
+  $location = str_replace(array("\n\r", "\n", "\r"), " ", $location);
+  $size = str_replace(array("\n\r", "\n", "\r"), " ", $size);
+  $price = str_replace(array("\n\r", "\n", "\r"), " ", $price);
+  $tenure = str_replace(array("\n\r", "\n", "\r"), " ", $tenure);
+  $commission = str_replace(array("\n\r", "\n", "\r"), " ", $commission);
+  $tagging = str_replace(array("\n\r", "\n", "\r"), " ", $tagging);
+  $remarks = str_replace(array("\n\r", "\n", "\r"), " ", $remarks);
+  $est = str_replace(array("\n\r", "\n", "\r"), " ", $est);
+  $usp = str_replace(array("\n\r", "\n", "\r"), " ", $usp);
+
+
     $sql = "INSERT INTO `listing`";
     $sql .= "(district, huttons, project_name, location, type, size, price, tenure, commission, contact_person, tagging, remarks, est, usp)";
-      // foreach($key as $val){
-   
     $sql .= " VALUES ('$district', '$huttons', '$projectname', '$location', '$type', '$size', '$price', '$tenure', '$commission', '$contact_person', '$tagging', '$remarks', '$est', '$usp')";
    
     $con = $this->db();
@@ -543,12 +689,30 @@ public function make()
     $tenure = trim($_POST['tenure']);
     $size = trim($_POST['size']);
     $type = trim($_POST['type']);
+   
+   
+
     // $tenure = trim($_POST['tenure']);
       $a = "district = '$district' AND";
       $b = "project_name = '$project' AND";
       $c = "tenure = '$tenure' AND";
       $d = "size = '$size' AND";
-      $e = "type = '$type' AND";
+      if($type == 1){
+         $e = "`type` = '1 rm' OR `type` = '1 rm Duplex' OR `type` = '1 rm PES' OR `type` = '1 rm PH' OR `type` = '1+S' OR `type` = '1+S PH' OR";
+      }else if($type == 2){
+         $e = "`type` = '2 rm' OR type = '2 rm Duplex' OR `type` = '2 rm PES' OR `type` = '2 rm PH' OR `type` = '2+S' OR `type` = '2+S PH' OR `type` = '2DK' OR ";
+      }else if($type == 3){
+         $e = "`type` = '3 rm' OR `type` = '3 rm Duplex' OR `type` = '3 rm PH' OR `type` = '3+S' OR `type` = '3+S PH' OR `type` = '3DK' OR";
+      }else if($type == 4){
+         $e = "`type` = '4 rm' OR `type` = '4 rm Duplex' OR `type` = '4 rm PH' OR `type` = '4+S PH' OR `type` = '4DK' OR";
+      }else if($type == 5){
+         $e = "`type` = '5 rm' OR `type` = '5 rm PH' OR";
+      }else if($type == 6){
+         $e = "`type` = '6 rm PH' OR ";
+      }else{
+        $e = "`type` = '$type' OR";
+      }
+
 
 
   if(empty($_POST['district'])){
@@ -571,6 +735,7 @@ $k="";
 if(empty($_POST['type']) && empty($_POST['district']) && empty($_POST['project']) && empty($_POST['tenure']) && empty($_POST['size'])){
   $k = "AND";
 }else{
+
   unset($k);
 }
 $f = "";
@@ -616,13 +781,20 @@ if(empty($_POST['price'])){
     }
 
     if(empty($_POST['price'])){
-    $sql = substr($sql, 0, -8);
+      $sql = trim($sql);
+    $sql = substr($sql, 0, -3);
+    }
+    if($type != "1rm" && $type != "2rm" && $type != "3rm" && $type != "4rm" && $type != "5rm" && $type != "6rm"){
+      $sql = str_replace("OR", "AND", $sql);
     }
     // var_dump($sql);
     // exit();
+    
     // $sql .= " WHERE district LIKE '%$district%' AND type LIKE '%$type%' AND size LIKE '%$size%' AND price LIKE '%$price%' AND tenure LIKE '%$tenure%'";
     $con = $this->db();
     $res = $con->query($sql);
+    // var_dump($res);
+    // exit();
     if($res->num_rows>0){
       $all = array();    
       while($result = $res->fetch_assoc()){

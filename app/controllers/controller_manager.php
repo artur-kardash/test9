@@ -82,8 +82,26 @@ class Controller_Manager extends Controller
 
   function action_listing()
   {
-    $res = $this->model->listing();
-    $data['inf'] = $res;
+    $res = $this->model->alllisting();
+    $proj = $this->model->allprojects();
+    $data['proj'] = $proj;
+    $proj = $this->model->allloc();
+    $data['allloc'] = $proj;
+    $type = $this->model->alltypes();
+    $data['alltype'] = $type;
+    $size = $this->model->allsizes();
+    $data['allsize'] = $size;
+    $com = $this->model->allcom();
+    $data['allcom'] = $com;
+    $con = $this->model->allcon();
+    $data['allcon'] = $con;
+    $est = $this->model->allest();
+    $data['allest'] = $est;
+    $usp = $this->model->allusp();
+    $data['allusp'] = $usp;
+    $data['title'] = 'All listing';
+    $data['all'] = $res;
+  
      if($res == 'error'){
       $data['all'] = "You don`t have a listing!";
       $this->view->generate("manager_listing_view.php", "manager_template_view.php", $data);
@@ -116,7 +134,11 @@ $columns = array(
           array('db' => 'remarks', 'dt'=> 12, 'field'=>'remarks'),
           array('db' => 'est', 'dt'=> 13, 'field'=>'est'),
           array('db' => 'usp', 'dt'=> 14, 'field'=>'usp'),
-
+          array('db' => 'id', 'dt' => 15, 'field'=>'id', 'formatter' => function($d, $row) {
+        $string = "<a href='/admin/editlisting?id=".$d."'>"."<input class='btn btn-info pull-left newbutton' type='submit' value='Edit'>"."</a>";
+        $string .= "<a href='/admin/deletelisting?id=".$d."'>"."<input class='btn btn-info pull-left newbutton' type='submit' value='Delete'>"."</a>";
+        return $string;
+      }),
 );
  
 $sql_details = array(
@@ -163,6 +185,11 @@ exit();
       $data['res'] = $res;
       $this->view->generate("manager_sincresult_view.php", "manager_template_view.php", $data); 
     }
+  }
+
+  function action_calendar()
+  {
+    $this->view->generate("manager_calendar_view.php", "manager_template_view.php", $data); 
   }
 
 

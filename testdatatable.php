@@ -85,7 +85,7 @@ $(document).ready(function () {
             }
           });
         });
-      },
+      }, 
       "initComplete": function () {
         var r = $('#approvals tfoot tr');
         r.find('th').each(function(){
@@ -143,14 +143,6 @@ $(document).ready(function () {
     table.columns().eq( 0 ).each( function ( colIdx ) {
         $( 'input, select', table.column( colIdx ).footer() ).on( 'keyup change', function () {
           if(colIdx == 2 || colIdx == 3){
-            var dorn = Date.parse( this.value + ' 00:00:00 GMT +1100' );
-            var stamp = Math.floor( Number(dorn) / 10000000 );
-            console.log(stamp);
-            table
-              .column( colIdx )
-              .search( isNaN(stamp) ? '' : stamp )
-              .draw();
-          } else {
             table
               .column( colIdx )
               .search(this.value)

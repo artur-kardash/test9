@@ -205,6 +205,8 @@
 <!--            <li><a href="ui-icons">Icons</a></li>-->
 <!--          </ul>-->
         </li>
+        <li><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-usd"></span><p>Appointment</p></a></li>
+
         <li><a href="<?php echo __HOST__; ?>/manager/sinc" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-resize-horizontal"></span><p>Synchronization</p></a></li>
 
         <li><a href="<?php echo __HOST__; ?>/manager/allusers" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th"></span><p>Contact list</p></a></li>
@@ -220,7 +222,7 @@
 
           </ul> -->
         </li>
-        <li><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-calendar"></span><p>Calendar</p></a>
+        <li><a href="<?php echo __HOST__; ?>/manager/calendar" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-calendar"></span><p>Calendar</p></a>
 <!--          <ul class="sub-menu">-->
 <!--            <li><a href="charts-sparkline">Sparkline</a></li>-->
 <!--            <li><a href="charts-rickshaw">Rickshaw</a></li>-->
@@ -229,7 +231,7 @@
 <!--            <li><a href="charts-chartjs">Chart.js</a></li>-->
 <!--          </ul>-->
         </li>
-        <li><a href="<?php echo __HOST__; ?>/user/" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-usd"></span><p>Profit/Lost</p></a></li>
+        <!-- <li><a href="<?php echo __HOST__; ?>/user/" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-usd"></span><p>Profit/Lost</p></a></li> -->
       </ul>
     </div><!-- Page Sidebar Inner -->
   </div><!-- Page Sidebar -->

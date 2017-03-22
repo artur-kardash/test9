@@ -64,12 +64,33 @@
    
      </select>
        <label>Type</label>
-     <select name="type" class="form-control">
+   <!--   <select name="type" class="form-control">
      <option disabled selected>Please select</option>
       <? foreach($data['type'] as $type): ?>
       <option value="<?=$type['type']?>"><?=$type['type']?></option>
      <? endforeach; ?>
-     </select>
+     </select> -->
+      <select name="type" class="form-control">
+    <option disabled selected>Please select</option>
+     
+    <option value="1">1rm</option>
+    <option value="2">2rm</option>
+    <option value="3">3rm</option>
+    <option value="4">4rm</option>
+    <option value="5">5rm</option>
+    <option value="6">6rm</option>
+    <option value="B1 Industrial">B1 Industrial</option>
+    <option value="Landed Cluster">Landed Cluster</option>
+    <option value="Landed">Landed</option>
+    <option value="Medical Clinic">Medical Clinic</option>
+    <option value="Office">Office</option>
+    <option value="PH">PH</option>
+    <option value="Restaurant">Restaurant</option>
+    <option value="Shops">Shops</option>
+    <option value="Studio">Studio</option>
+    <option value="Supermarket">Supermarket</option>
+    
+    </select>
        <label>Price</label>
      <select name="price" class="form-control">
      <option disabled selected>Please select</option>

@@ -20,7 +20,6 @@
       <th width="30%">Com</th>
       <th width="30%">Tagger</th>
       <th width="30%">FOC Tag</th>
-      <th width="30%">Building status</th>
       <th width="30%">Est. TOP</th>
       <th width="30%">USP</th>
       <th width="30%">Remarks</th>
@@ -48,7 +47,6 @@
           <td class=""><?= $inf['commission'] ?></td>
           <td class=""><?= $inf['contact_person'] ?></td>
           <td class=""><?= $inf['tagging'] ?></td>
-          <td class=""><?= $inf['building_status'] ?></td>
           <td class=""><?= $inf['remarks'] ?></td>
           <td class=""><?= $inf['est'] ?></td>
           <td class=""><?= $inf['usp'] ?></td>
