@@ -323,7 +323,7 @@ exit();
 
   function action_appointment()
   {
-    $data['title'] = "appointment";
+    $data['title'] = "Appointment";
     $this->view->generate("appoinment_view.php", "template_view.php", $data); 
   }
 
@@ -365,7 +365,8 @@ exit();
 
   function action_calendar()
   {
-    $this->view->generate("calendar_view.php", "template_view.php", $data); 
+      $data['title'] = "Calendar";
+      $this->view->generate("calendar_view.php", "template_view.php", $data);
   }
 
 

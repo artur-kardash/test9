@@ -273,10 +273,17 @@ exit();
     }
   }
 
-  function action_calendar()
-  {
-    $this->view->generate("user_calendar_view.php", "user_template_view.php", $data); 
-  }
+    function action_appointment()
+    {
+        $data['title'] = "Appointment";
+        $this->view->generate("appoinment_view.php", "user_template_view.php", $data);
+    }
+
+    function action_calendar()
+    {
+        $data['title'] = "Calendar";
+        $this->view->generate("calendar_view.php", "user_template_view.php", $data);
+    }
 
 
 
