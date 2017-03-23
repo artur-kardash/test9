@@ -34,6 +34,27 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div id="appointment-added" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="bg-success modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Success!</h4>
+            </div>
+            <div class="modal-body">
+                <p>Аppointment was successfully added to the Google Calendar</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <script async defer src="https://apis.google.com/js/api.js"
         onload="this.onload=function(){};handleClientLoad()"
         onreadystatechange="if (this.readyState === 'complete') this.onload()">
@@ -205,6 +226,7 @@
 
         request.execute(function(event) {
             console.log('Event created: ' + event.htmlLink);
+            $('#appointment-added').modal('show');
         });
     }
 
