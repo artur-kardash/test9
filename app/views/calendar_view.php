@@ -3,8 +3,8 @@
 <h1>Google Calendar</h1>
 
 <!--Add buttons to initiate auth sequence and sign out-->
-<button id="authorize-button" style="display: none;">Authorize</button>
-<button id="signout-button" style="display: none;">Sign Out</button>
+<button class="btn btn-success" id="authorize-button" style="display: none;">Authorize</button>
+<button class="btn btn-default" id="signout-button">Sign Out</button>
 
 
 <script type="text/javascript">
@@ -20,7 +20,7 @@
 
     // Authorization scopes required by the API; multiple scopes can be
     // included, separated by spaces.
-    var SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
+    var SCOPES = "https://www.googleapis.com/auth/calendar";
 
     var authorizeButton = document.getElementById('authorize-button');
     var signoutButton = document.getElementById('signout-button');
@@ -60,10 +60,12 @@
         if (isSignedIn) {
             authorizeButton.style.display = 'none';
             signoutButton.style.display = 'block';
+            $('#calendar').show();
             listUpcomingEvents();
         } else {
             authorizeButton.style.display = 'block';
             signoutButton.style.display = 'none';
+            $('#calendar').hide();
         }
     }
 
@@ -87,24 +89,27 @@
      *
      * @param {string} message Text to be placed in pre element.
      */
-//    function appendPre(message) {
-//        var pre = document.getElementById('content');
-//        var textContent = document.createTextNode(message + '\n');
-//        //pre.appendChild(textContent);
-//    }
+    function appendPre(message) {
+        var pre = document.getElementById('content');
+        var textContent = document.createTextNode(message + '\n');
+        //pre.appendChild(textContent);
+    }
 
     /**
      * Print the summary and start datetime/date of the next ten events in
      * the authorized user's calendar. If no events are found an
      * appropriate message is printed.
      */
+    var yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+
     function listUpcomingEvents() {
         gapi.client.calendar.events.list({
             'calendarId': 'primary',
-            'timeMin': (new Date()).toISOString(),
+            'timeMin': yesterday.toISOString(),
             'showDeleted': false,
             'singleEvents': true,
-            'maxResults': 10,
+            'maxResults': 30,
             'orderBy': 'startTime'
         }).then(function(response) {
             var events = response.result.items;
@@ -117,12 +122,18 @@
                     if (!when) {
                         when = event.start.date;
                     }
-                    EventsArray.push({title: event.summary, start: when});
-                    //appendPre(event.summary + ' (' + when + ')')
+                    EventsArray.push({
+                        title: event.summary+' (Remarks: '+event.description+')',
+                        start: when,
+                        end: event.end.dateTime,
+                        //url:event.htmlLink
+                    });
+                    //console.log(event.summary + ' (' + when + ')')
                 }
             } else {
                 appendPre('No upcoming events found.');
             }
+            console.log(events);
         });
     }
 
@@ -144,7 +155,7 @@
     function fillCalendar(){
         $('#calendar').fullCalendar({
             header: {
-                left: 'prev,next today',
+                left: 'prev,next, today',
                 center: 'title',
                 right: 'month,basicWeek,basicDay'
             },
@@ -156,11 +167,8 @@
         });
     }
 
-
-    setTimeout(fillCalendar, 1000);
-    console.log(EventsArray);
-
+    setTimeout(fillCalendar, 2000);
 
 </script>
 
-<div id='calendar'></div>
+<div id='calendar' style="display:none;"></div>

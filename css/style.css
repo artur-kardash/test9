@@ -681,3 +681,9 @@ input:focus {
   overflow-x: scroll;
 }
 
+#signout-button{
+  display: none;
+  float:right;
+  position:relative;
+  top:-35px;
+}
